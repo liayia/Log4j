@@ -3,8 +3,8 @@ import pymongo
 client = pymongo.MongoClient()
 db = client.test
 
-db.course.drop()
-db.course.insert_many([
+#db.course.drop()
+db.course_sub.insert_many([
     {
         'student': 'S1',
         'courseList': [
