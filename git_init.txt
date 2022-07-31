@@ -1,2 +1,5 @@
 git config --global user.email "liayia.tw@gmail.com"
 git config --global user.name "Arthur Chao"
+
+git config --get-all user.name "Arthur Chao"
+git config --get-all user.email "liayia.tw@gmail.com"
