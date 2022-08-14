@@ -6,9 +6,9 @@ db = client.test
 session = client.start_session()
 # 交易開始
 session.start_transaction()
-db.test.update_one({ 'name': 'David' }, { '$set': { 'age': 20 }}, session=session)
+db.test.update_one({ 'name': 'Tom' }, { '$set': {'age': 25}}, session=session)
 
-docs = db.test.find({}, session=session)
+docs = db.test.find({'name': 'Tom'}, session=session)
 print(list(docs))
 
 ret = input("enter '1' to commit, others rollback: ")
