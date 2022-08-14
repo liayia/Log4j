@@ -1,3 +1,4 @@
+from tkinter import E
 import pymongo
 
 client = pymongo.MongoClient(['localhost:20000', 'localhost:20001', 'localhost:20002'])
@@ -17,6 +18,8 @@ def buy():
             { '_id': 1 }, 
             { '$inc': { 'value': -1 }}
         )
+    else:
+        print('賣完了')
 
 def report():
     doc = db.product.find_one({'_id': 1})
