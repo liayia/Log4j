@@ -10,7 +10,7 @@ db = client.test
 db.test.update_One({ 'name': 'David' }, { '$set': { 'age': 40 }})
 
 # 查看交易外的資料
-# docs = db.test.fdind({})
+# docs = db.test.find({})
 # 查看交易內的資料
 #docs = db.test.find({}, session=session)
 #print(list(docs))
