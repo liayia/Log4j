@@ -1,0 +1,52 @@
+0. 新增資料
+test> db.school.insertMany([
+    { c:'teacher' },
+    { c:'student' }
+])
+
+1. 關平衡器 
+test> sh.disableBalancing('test.school')
+
+2. 建立索引
+test> db.school.createIndex({ 'c': 1, '_id': 'hashed' })
+
+3. 決定片鍵
+test> sh.shardCollection(
+    'test.school',
+    { 'c': 1, '_id': 'hashed' }
+)
+
+4. 建立區域
+test> sh.addShardToZone('rs0', 'TEACHER')
+test> sh.addShardToZone('rs1', 'STUDENT')
+
+5. test> sh.status()
+
+6. 決定哪些資料要到哪個區域
+test> sh.updateZoneKeyRange(
+    'test.school',
+    { 'c': 'teacher', '_id': MinKey() },
+    { 'c': 'teacher', '_id': MaxKey() },
+    'TEACHER'
+)
+
+test> sh.updateZoneKeyRange(
+    'test.school',
+    { 'c': 'student', '_id': MinKey() },
+    { 'c': 'student', '_id': MaxKey() },
+    'STUDENT'
+)
+
+7. 開平衡器
+test> sh.enableBalancing('test.school')
+
+
+
+
+
+
+
+
+
+
+

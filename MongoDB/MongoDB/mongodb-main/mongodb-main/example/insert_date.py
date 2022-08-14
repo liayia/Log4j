@@ -5,7 +5,7 @@ client = pymongo.MongoClient()
 db = client.test
 
 db.product.drop()
-db.insert_one({'price': 100, 'date': datetime(2021,1,5,0,0,0)})
+db.product.insert_one({'price': 100, 'date': datetime(2021,1,5,0,0,0)})
 db.product.insert_one({'price': 200, 'date': datetime(2021,2,5,0,0,0)})
 db.product.insert_one({'price': 200, 'date': datetime(2021,3,5,0,0,0)})
 db.product.insert_one({'price': 600, 'date': datetime(2021,7,5,0,0,0)})
